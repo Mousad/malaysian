@@ -1,0 +1,10 @@
+{
+  "description": "Connects Sudanese and international students with Malaysian universities, offering comprehensive support for admissions, scholarships, and travel arrangements.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
