@@ -72,14 +72,7 @@ export default function App() {
             </Layout>
           }
         />
-        <Route
-          path="/stories"
-          element={
-            <Layout>
-              <Stories />
-            </Layout>
-          }
-        />
+       
         <Route
           path="/faq"
           element={

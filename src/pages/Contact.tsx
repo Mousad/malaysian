@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 import { Phone, Mail, MessageCircle, MapPin, Clock, Send, CheckCircle2 } from 'lucide-react'
 
 export default function Contact() {
@@ -63,35 +65,37 @@ export default function Contact() {
           <div className="lg:col-span-2 flex flex-col gap-6">
 
 
-            {[
-              {
-                icon: MessageCircle,
-                label: 'واتساب',
-                primary: '+249 91 234 5678',
-                secondary: 'متاح من الأحد إلى الخميس، 9 صباحاً - 9 مساءً',
-                href: 'https://wa.me/249912345678',
-                cta: 'راسلنا',
-              },
+          {[
+  {
+    icon: FaWhatsapp,
+    label: 'واتساب',
+    primary: '+60 11-1100 0635',
+    secondary: 'متاح من الأحد إلى الخميس، 9 صباحاً - 9 مساءً',
+    href: 'https://wa.me/249912345678',
+    cta: 'راسلنا',
+    color: 'text-[#25D366]',
+  },
 
-              {
-                icon: Phone,
-                label: 'الهاتف',
-                primary: '+249 91 234 5678',
-                secondary: 'المكتب: +249 15 678 9012',
-                href: 'tel:+249912345678',
-                cta: 'اتصل الآن',
-              },
+  {
+    icon: FaPhoneAlt,
+    label: 'الهاتف',
+    primary: '+60 11-1100 0635',
+    secondary: 'المكتب:+60 11-1100 0635  ',
+    href: 'tel:+60 11-1100 0635',
+    cta: 'اتصل الآن',
+    color: 'text-[#0d2b5e]',
+  },
 
-              {
-                icon: Mail,
-                label: 'البريد الإلكتروني',
-                primary: 'info@mpe-edu.com',
-                secondary: 'نرد خلال 24 ساعة',
-                href: 'mailto:info@mpe-edu.com',
-                cta: 'إرسال بريد',
-              },
-
-            ].map(({ icon: Icon, label, primary, secondary, href, cta }) => (
+  {
+    icon: MdEmail,
+    label: 'البريد الإلكتروني',
+    primary: 'info@mpe-edu.com',
+    secondary: 'نرد خلال 24 ساعة',
+    href: 'mailto:info@mpe-edu.com',
+    cta: 'إرسال بريد',
+    color: 'text-red-500',
+  },
+].map(({ icon: Icon, label, primary, secondary, href, cta }) => (
 
               <a
                 key={label}

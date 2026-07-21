@@ -1,94 +1,99 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ChevronDown, ArrowRight, MessageCircle } from 'lucide-react'
+import { FaWhatsapp } from "react-icons/fa";
+import { ChevronDown, ArrowRight,  } from 'lucide-react'
 
 const FAQS = [
   {
-    category: 'Admission',
+    category: 'القبول الجامعي',
     items: [
       {
-        q: 'What are the minimum requirements to study in Malaysia?',
-        a: 'Requirements vary by university and program, but generally you need a high school certificate with passing grades, basic English proficiency, and a valid passport. Some universities require IELTS 5.0–6.0. Our consultants will assess your specific qualifications and match you with universities where you qualify.',
+        q: 'ما هي متطلبات الدراسة في ماليزيا؟',
+        a: 'تختلف المتطلبات حسب الجامعة والتخصص، ولكن بشكل عام تحتاج إلى شهادة الثانوية أو آخر مؤهل دراسي، وجواز سفر ساري المفعول، وإثبات إجادة اللغة الإنجليزية في بعض الجامعات. يقوم فريق UniGuide بتقييم ملفك واختيار الجامعات المناسبة لك.',
       },
       {
-        q: 'Can I apply without an IELTS certificate?',
-        a: "Yes. Several of our partner universities offer English language entry tests or foundation programs that waive the IELTS requirement. We'll help you find the best route based on your English level.",
+        q: 'هل يمكنني التقديم بدون شهادة IELTS؟',
+        a: 'نعم، العديد من الجامعات الماليزية توفر اختبار لغة داخلي أو برامج لغة إنجليزية تغني عن شهادة IELTS. سنساعدك في اختيار الجامعة المناسبة حسب مستواك.',
       },
       {
-        q: 'How long does the admission process take?',
-        a: 'Typically 4–8 weeks from when we submit your application to receiving an offer letter. Some universities are faster. Visa processing adds another 4–6 weeks. We advise starting at least 3–4 months before your intended intake.',
+        q: 'كم تستغرق إجراءات القبول؟',
+        a: 'عادةً تستغرق إجراءات القبول من 4 إلى 8 أسابيع حسب الجامعة، ثم تستغرق إجراءات التأشيرة من 4 إلى 6 أسابيع أخرى. لذلك ننصح ببدء التقديم قبل موعد الدراسة بعدة أشهر.',
       },
       {
-        q: 'Can I apply to multiple universities at the same time?',
-        a: "Absolutely. We recommend applying to 2–3 universities simultaneously to maximise your options. We manage all applications in parallel at no extra cost.",
+        q: 'هل يمكنني التقديم لأكثر من جامعة في نفس الوقت؟',
+        a: 'نعم، بل ننصح بذلك لزيادة فرص القبول. يقوم فريق UniGuide بإدارة جميع طلبات التقديم ومتابعتها دون أي تعقيدات.',
       },
     ],
   },
+
   {
-    category: 'Scholarships',
+    category: 'المنح الدراسية',
     items: [
       {
-        q: 'Is it possible to get a full scholarship to study in Malaysia?',
-        a: "Yes. The Malaysian Government Scholarship (MoHE) covers full tuition plus a monthly allowance. MARA also offers full packages for eligible applicants. Our team will assess your eligibility and help you apply.",
+        q: 'هل يمكنني الحصول على منحة دراسية كاملة؟',
+        a: 'نعم، توجد منح حكومية ومنح مقدمة من الجامعات الماليزية تغطي الرسوم الدراسية بالكامل أو جزءاً منها، وقد تشمل أيضاً مخصصاً شهرياً. نقوم بتقييم أهليتك ومساعدتك في التقديم.',
       },
       {
-        q: 'When should I start applying for scholarships?',
-        a: 'As early as possible — ideally 6 months before your intended intake. Some scholarships have fixed annual deadlines (February–April). Others, like university merit awards, are rolling.',
+        q: 'متى يجب أن أبدأ التقديم على المنح؟',
+        a: 'يفضل البدء قبل موعد الدراسة بحوالي 6 أشهر، لأن بعض المنح لها مواعيد محددة بينما تظل منح أخرى مفتوحة طوال العام.',
       },
       {
-        q: 'Do I need to be a top student to get a scholarship?',
-        a: "Not necessarily. While academic merit is important, many scholarships also consider financial need, extracurricular activities, and personal motivation. We'll help you find scholarships that fit your profile.",
+        q: 'هل يجب أن أكون من الطلاب المتفوقين للحصول على منحة؟',
+        a: 'ليس بالضرورة، فبعض المنح تعتمد على التفوق الأكاديمي، بينما تعتمد منح أخرى على النشاطات، والوضع المالي، والدافع الشخصي للطالب.',
       },
     ],
   },
+
   {
-    category: 'Visa',
+    category: 'التأشيرة',
     items: [
       {
-        q: 'What is the Malaysian student visa process?',
-        a: "Malaysian student visas are processed through the Education Malaysia Global Services (EMGS) system. The process involves: (1) University issues an approval letter, (2) EMGS processes your visa application, (3) You receive a visa approval letter, (4) You travel and get an endorsement at the port of entry. We manage the entire process.",
+        q: 'كيف يتم استخراج التأشيرة الدراسية الماليزية؟',
+        a: 'بعد الحصول على القبول الجامعي يتم تقديم طلب التأشيرة عبر منصة EMGS، ثم تصدر موافقة التأشيرة، وبعد الوصول إلى ماليزيا يتم استكمال إجراءات ختم التأشيرة. يتولى فريقنا جميع هذه الخطوات نيابةً عنك.',
       },
       {
-        q: 'What is your visa success rate?',
-        a: "Our visa success rate is 98%. Rejections are extremely rare and usually due to document issues that we work hard to prevent. In the rare event of a rejection, we handle the appeal at no extra cost.",
+        q: 'ما نسبة نجاح استخراج التأشيرة؟',
+        a: 'تصل نسبة نجاح طلبات التأشيرة التي يقدمها فريقنا إلى أكثر من 98%، حيث نحرص على مراجعة جميع المستندات قبل التقديم لتجنب أي أخطاء.',
       },
       {
-        q: 'Do I need to do a medical examination?',
-        a: "Yes. Malaysian student visa requires a medical check from an EMGS-approved clinic in Sudan. We'll guide you to the right clinic and what tests are required.",
+        q: 'هل الفحص الطبي إلزامي؟',
+        a: 'نعم، تشترط الحكومة الماليزية إجراء الفحص الطبي في أحد المراكز المعتمدة قبل إصدار التأشيرة، وسنرشدك إلى المركز المناسب.',
       },
     ],
   },
+
   {
-    category: 'Costs & Payments',
+    category: 'الرسوم والتكاليف',
     items: [
       {
-        q: 'How much does your consultation service cost?',
-        a: "The initial consultation is completely free. Our service fees vary depending on the level of support required and are discussed transparently before you commit to anything. Many students find our fee is offset many times over by the scholarships we help secure.",
+        q: 'هل الاستشارة مجانية؟',
+        a: 'نعم، الاستشارة الأولى مجانية بالكامل، حيث نقوم بتقييم حالتك والإجابة على جميع استفساراتك دون أي رسوم.',
       },
       {
-        q: 'What are the tuition fees at Malaysian universities?',
-        a: "Tuition varies significantly. Public universities charge MYR 10,000–20,000/year for international students. Private universities range from MYR 18,000–40,000/year. Specific fees for each program are available on each university's page.",
+        q: 'كم تبلغ الرسوم الدراسية في الجامعات الماليزية؟',
+        a: 'تختلف الرسوم حسب الجامعة والتخصص، حيث تبدأ من حوالي 10,000 رنجيت ماليزي سنوياً في الجامعات الحكومية، ومن 18,000 رنجيت في الجامعات الخاصة.',
       },
       {
-        q: 'Can I pay tuition in USD or SDG?',
-        a: "Most Malaysian universities accept tuition in Malaysian Ringgit (MYR). We can guide you on the best currency conversion methods and advise on affordable transfer services.",
+        q: 'كيف يمكنني دفع الرسوم الدراسية؟',
+        a: 'يتم دفع الرسوم عادةً بالرنغيت الماليزي، وسنساعدك في اختيار أفضل وأقل تكلفة لتحويل الأموال إلى ماليزيا.',
       },
     ],
   },
+
   {
-    category: 'Life in Malaysia',
+    category: 'الحياة في ماليزيا',
     items: [
       {
-        q: 'Is Malaysia safe for Sudanese students?',
-        a: "Yes. Malaysia is one of the safest countries in Southeast Asia with a very welcoming attitude towards Arab and African students. There is a large Sudanese and Arab community in Kuala Lumpur.",
+        q: 'هل ماليزيا آمنة للطلاب؟',
+        a: 'نعم، تعتبر ماليزيا من أكثر الدول أماناً في آسيا، وتستقبل آلاف الطلاب الدوليين سنوياً، كما يوجد بها جاليات عربية وسودانية كبيرة.',
       },
       {
-        q: 'Can I work part-time as an international student in Malaysia?',
-        a: "Yes. International students on a student visa can work up to 20 hours per week off-campus. On-campus work is generally unrestricted. We provide guidance on legal part-time work opportunities.",
+        q: 'هل يمكنني العمل أثناء الدراسة؟',
+        a: 'نعم، يسمح للطلاب الدوليين بالعمل بدوام جزئي وفق القوانين الماليزية، وسنقدم لك الإرشادات اللازمة حول ذلك.',
       },
       {
-        q: 'Is halal food available in Malaysia?',
-        a: "Absolutely. Malaysia is a Muslim-majority country. Halal food is available everywhere — from street food to malls to restaurants. Most university canteens are halal-certified.",
+        q: 'هل الطعام الحلال متوفر؟',
+        a: 'بالتأكيد، ماليزيا دولة إسلامية وتنتشر فيها المطاعم الحلال في جميع المدن والجامعات والأسواق.',
       },
     ],
   },
@@ -101,112 +106,179 @@ export default function FAQ() {
   return (
     <div className="bg-white">
       {/* HERO */}
-      <section className="pt-32 pb-20 bg-surface border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-navy/50 mb-4">FAQ</p>
-            <h1 className="text-5xl lg:text-6xl font-bold text-ink tracking-tight leading-tight mb-5">
-              Answers to your questions
-            </h1>
-            <p className="text-muted text-lg leading-relaxed mb-8">
-              Everything you need to know about studying in Malaysia, the application process, scholarships, and student life.
-            </p>
-            <a
-              href="https://wa.me/249912345678"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-navy text-white rounded-xl font-semibold text-sm hover:bg-navy-light transition-colors"
-            >
-              <MessageCircle size={15} /> Can't find your answer? Ask on WhatsApp
-            </a>
-          </div>
-          <div className="hidden lg:grid grid-cols-2 gap-4">
-            {[
-              { value: '50+', label: 'Questions Answered' },
-              { value: '24h', label: 'Response Time' },
-              { value: '5★', label: 'Support Rating' },
-              { value: 'Free', label: 'First Consultation' },
-            ].map(({ value, label }) => (
-              <div key={label} className="bg-white rounded-2xl p-6 border border-border text-center">
-                <p className="text-3xl font-bold text-navy">{value}</p>
-                <p className="text-xs text-muted mt-1">{label}</p>
-              </div>
-            ))}
-          </div>
+     <section className="pt-32 pb-20 bg-surface border-b border-border">
+  <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+
+    {/* النص */}
+    <div className="text-right">
+      <p className="text-xs font-semibold tracking-widest text-navy/50 mb-4">
+        الأسئلة الشائعة
+      </p>
+
+      <h1 className="text-4xl lg:text-6xl font-bold text-[#0d2b5e] leading-tight mb-5">
+        إجابات لجميع
+        <br />
+        استفساراتك
+      </h1>
+
+      <p className="text-muted text-lg leading-8 mb-8">
+        جمعنا أكثر الأسئلة التي يطرحها الطلاب حول الدراسة في ماليزيا،
+        بدءًا من شروط القبول والتقديم، مرورًا بالتأشيرة والمنح الدراسية،
+        وحتى السكن والحياة الطلابية.
+      </p>
+
+      <a
+        href="https://wa.me/249912345678"
+        className="inline-flex items-center gap-2 px-7 py-2 bg-[#00c950] text-[#f8fafc] rounded-[10px] font-semibold hover:bg-[#123b7a] transition-all"
+      >
+        <FaWhatsapp size={22} className="text-[#f8fafc]" />
+           واتساب
+      </a>
+    </div>
+
+    {/* الإحصائيات */}
+    <div className="hidden lg:grid grid-cols-2 gap-4">
+
+      {[
+        {
+          value: '+50',
+          label: 'سؤال تمت الإجابة عنه',
+        },
+        {
+          value: '24 ساعة',
+          label: 'متوسط وقت الرد',
+        },
+        {
+          value: '5★',
+          label: 'تقييم خدمة العملاء',
+        },
+        {
+          value: 'مجانًا',
+          label: 'الاستشارة الأولى',
+        },
+      ].map(({ value, label }) => (
+        <div
+          key={label}
+          className="bg-white rounded-2xl p-6 border border-border text-center shadow-sm hover:shadow-lg transition-all"
+        >
+          <p className="text-3xl font-bold text-navy">
+            {value}
+          </p>
+
+          <p className="text-sm text-muted mt-2">
+            {label}
+          </p>
         </div>
-      </section>
+      ))}
+
+    </div>
+
+  </div>
+</section>
 
       {/* FAQ */}
-      <section className="py-16 lg:py-24">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          {/* Category tabs */}
-          <div className="flex flex-wrap gap-2 mb-10">
-            {FAQS.map(({ category }) => (
-              <button
-                key={category}
-                onClick={() => setOpenCategory(category)}
-                className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-colors ${
-                  openCategory === category
-                    ? 'bg-navy text-white'
-                    : 'bg-surface border border-border text-ink/60 hover:border-navy/30 hover:text-ink'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+    <section className="py-10 lg:py-24" dir="rtl">
+  <div className="max-w-5xl mx-auto px-2 lg:px-8">
 
-          {/* Items */}
-          {FAQS.filter((g) => g.category === openCategory).map(({ items }) => (
-            <div key={openCategory} className="flex flex-col gap-3">
-              {items.map(({ q, a }) => (
-                <div
-                  key={q}
-                  className="border border-border rounded-2xl overflow-hidden hover:border-navy/20 transition-colors"
-                >
-                  <button
-                    onClick={() => setOpenItem(openItem === q ? null : q)}
-                    className="w-full flex items-center justify-between gap-4 p-6 text-left hover:bg-surface/50 transition-colors"
-                  >
-                    <span className="font-semibold text-ink text-[15px]">{q}</span>
-                    <ChevronDown
-                      size={18}
-                      className={`text-muted shrink-0 transition-transform duration-200 ${
-                        openItem === q ? 'rotate-180' : ''
-                      }`}
-                    />
-                  </button>
-                  {openItem === q && (
-                    <div className="px-6 pb-6 border-t border-border">
-                      <p className="text-muted leading-relaxed pt-5">{a}</p>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </section>
+    {/* أزرار التصنيفات */}
+    <div className="flex flex-wrap justify-center gap-3 mb-10">
+      {FAQS.map(({ category }) => (
+        <button
+          key={category}
+          onClick={() => setOpenCategory(category)}
+          className={`px-5 py-2 rounded-[10px] text-[10px] font-semibold transition-all ${
+            openCategory === category
+              ? 'bg-navy text-white'
+              : 'bg-surface border border-border text-ink hover:border-navy hover:text-navy'
+          }`}
+        >
+          {category}
+        </button>
+      ))}
+    </div>
+
+    {/* الأسئلة */}
+    {FAQS.filter((g) => g.category === openCategory).map(({ items }) => (
+      <div key={openCategory} className="flex flex-col gap-4">
+
+        {items.map(({ q, a }) => (
+          <div
+            key={q}
+            className="border border-border rounded-[10px] overflow-hidden bg-white hover:border-navy/20 transition-all duration-300"
+          >
+
+            <button
+              onClick={() => setOpenItem(openItem === q ? null : q)}
+              className="w-full flex items-center justify-between gap-1 p-3 text-right hover:bg-surface/60 transition-colors"
+            >
+
+              <span className="font-bold text-ink text-[14px] leading-7">
+                {q}
+              </span>
+
+              <ChevronDown
+                size={20}
+                className={`text-navy shrink-0 transition-transform duration-300 ${
+                  openItem === q ? 'rotate-180' : ''
+                }`}
+              />
+            </button>
+
+            {openItem === q && (
+              <div className="px-6 pb-6 border-t border-border bg-surface/30">
+                <p className="text-muted leading-8 pt-5 text-[15px]">
+                  {a}
+                </p>
+              </div>
+            )}
+
+          </div>
+        ))}
+
+      </div>
+    ))}
+
+  </div>
+</section>
 
       {/* STILL HAVE QUESTIONS */}
-      <section className="py-20 bg-surface border-t border-border">
-        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-ink mb-4">Still have questions?</h2>
-          <p className="text-muted mb-8 text-lg">Our advisors are available 6 days a week — book a free call or message us on WhatsApp.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/contact"
-              className="px-7 py-4 bg-navy text-white rounded-2xl font-semibold text-sm hover:bg-navy-light transition-colors flex items-center gap-2 justify-center"
-            >
-              Book Free Consultation <ArrowRight size={15} />
-            </Link>
-            <a
-              href="https://wa.me/249912345678"
-              className="px-7 py-4 border border-border text-ink rounded-2xl font-medium text-sm hover:border-navy/30 hover:bg-white transition-colors flex items-center gap-2 justify-center"
-            >
-              <MessageCircle size={15} /> WhatsApp Us
-            </a>
-          </div>
-        </div>
-      </section>
+      <section className="py-20 bg-surface border-t border-border" dir="rtl">
+  <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+
+    <span className="inline-block px-4 py-2 rounded-full bg-navy/10 text-navy text-sm font-semibold mb-5">
+      نحن هنا لمساعدتك
+    </span>
+
+    <h2 className="text-3xl lg:text-5xl font-bold text-ink mb-6 leading-tight">
+      ما زالت لديك أسئلة؟
+    </h2>
+
+    <p className="text-muted text-lg leading-8 mb-10">
+      فريق <span className="font-semibold text-navy">UniGuide</span> جاهز للإجابة على جميع استفساراتك حول الدراسة في ماليزيا،
+      القبول الجامعي، المنح الدراسية، والتأشيرة. يمكنك حجز استشارة مجانية أو التواصل معنا مباشرة عبر واتساب.
+    </p>
+
+    <div className="flex  sm:flex-row-reverse gap-4 justify-center">
+
+      <Link
+        to="/contact"
+        className="inline-flex items-center justify-center gap-2 px-8 py-2 rounded-[10px]  bg-navy text-white font-semibold hover:bg-[#123b7a] transition-all"
+      >
+         استشارة 
+        <ArrowRight size={18} />
+      </Link>
+
+      <a
+        href="https://wa.me/249912345678"
+        className="inline-flex items-center justify-center gap-2 px-8 py-2 rounded-[10px] bg-[#00c950] border border-border text-[#f8fafc] font-medium hover:border-navy hover:bg-white transition-all"
+      >
+<FaWhatsapp className="text-[20px] text-[#f8fafc]" />          واتساب
+      </a>
+
+    </div>
+
+  </div>
+</section>
     </div>
   )
 }

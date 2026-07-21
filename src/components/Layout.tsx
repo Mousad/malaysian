@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+
 import {
   GraduationCap, Menu, X, ChevronDown,
   MessageCircle, Mail, Phone, MapPin,
@@ -173,6 +174,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </div>
         )}
       </header>
+
+      <a
+  href="https://wa.me/601111000635"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="fixed bottom-6 right-6 z-50 group"
+>
+  <div className="w-14 h-14 rounded-full bg-[#25D366] shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-green-500/40">
+    <FaWhatsapp className="text-white text-4xl" />
+  </div>
+
+  <span className="absolute  top-1/2 -translate-y-1/2 whitespace-nowrap bg-[#0d2b5e] text-white text-sm px-4 py-2 rounded-xl opacity-0 group-hover:opacity-100 transition-all" >
+    تواصل معنا عبر واتساب
+  </span>
+</a>
 
       {/* PAGE CONTENT */}
       <main className="flex-1 page-enter">{children}</main>
@@ -381,7 +397,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </div>
 
       <p>
-        © 2025 UniGuide. جميع الحقوق محفوظة.
+        © 2026 Malaysian. جميع الحقوق محفوظة.
       </p>
 
     </div>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
+import video from "../pilden/Video.mp4";
 import { Navigation, Autoplay } from "swiper/modules";
 import {
   ArrowRight,
@@ -253,98 +254,91 @@ export default function Home() {
   return (
     <div className="bg-white "  dir="rtl">
       {/* ── HERO ──────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-navy">
-        {/* Background image */}
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1508062878650-88b52897f298?w=1800&h=1200&fit=crop&auto=format"
-            alt="Kuala Lumpur skyline with Petronas Towers"
-            className="w-full h-full object-cover opacity-20"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/50" />
-        </div>
+     <section className="relative min-h-screen overflow-hidden flex items-center">
 
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-20 grid lg:grid-cols-2 gap-16 items-center w-full">
-          {/* Left */}
-<div>
-  <h1 className="text-3xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.05]  mb-6">
-    الدراسة في ماليزيا
-    <span className="block text-accent-mid">بكل ثقة</span>
-  </h1>
+  {/* الفيديو كخلفية */}
+  <video
+    src={video}
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="absolute inset-0 w-full h-full object-cover"
+  />
 
-  <p className="text-white/65 text-lg leading-relaxed max-w-md mb-10">
-    نساعد الطلاب في الحصول على القبول الجامعي، والمنح الدراسية، وإنهاء إجراءات التأشيرة،
-    مع تقديم دعم كامل حتى الوصول والاستقرار في ماليزيا.
-  </p>
+  {/* طبقة داكنة فوق الفيديو */}
+  <div className="absolute inset-0 bg-black/25" />
 
-  <div className="flex flex-row gap-4 mb-10">
-  <Link
-    to="/apply"
-    className="px-3 py-2 bg-white rounded-[8px] font-semibold text-sm hover:bg-accent transition-all flex items-center gap-2 justify-center"
-  >
-    قدّم الآن <ArrowRight size={16} />
-  </Link>
+  {/* المحتوى */}
+  <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
 
-  <Link
-    to="/contact"
-    className="px-3 py-2 border border-white/25 text-white rounded-[8px] font-medium text-sm hover:bg-white/10 hover:border-white/40 transition-all flex items-center justify-center"
-  >
-    احجز استشارة مجانية
-  </Link>
-</div>
+    <div className="max-w-3xl">
 
-  {/* مؤشرات الثقة */}
-  <div className="flex flex-wrap gap-5">
-    {[
-      "  إجراءات التأشيرة",
-      "استشارة ",
-      "دعم متكامل  ",
-    ].map((t) => (
-      <div key={t} className="flex items-center gap-2 text-white/60 text-sm">
-        <CheckCircle2 size={14} className="text-[#ffdf20]" />
-        {t}
+      
+
+      <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
+        ابدأ مستقبلك الأكاديمي
+        <br />
+        <span className="text-[#FFD54A]">
+          مع Malaysian
+        </span>
+      </h1>
+
+      <p className="text-white/90 text-lg lg:text-xl leading-7 max-w-2xl mb-8">
+        نوفر لك جميع الخدمات التي تحتاجها للدراسة في ماليزيا،
+        بدءًا من اختيار الجامعة والتخصص المناسب، مرورًا بالحصول
+        على القبول الجامعي والمنحة الدراسية، وحتى استخراج التأشيرة
+        والاستقبال في المطار ومساعدتك على الاستقرار.
+      </p>
+
+      <div className="flex  sm:flex-row gap-4">
+
+        <Link
+          to="/apply"
+          className="px-5 py-2 rounded-xl bg-[#0d2b5e] text-[white] font-bold hover:scale-105 transition-all flex items-center justify-center gap-2"
+        >
+          قدّم 
+          <ArrowRight size={18} />
+        </Link>
+
+        <Link
+          to="/contact"
+          className="px-5 py-2 rounded-xl border border-white/30 text-white hover:bg-white/10 transition-all flex items-center justify-center"
+        >
+           استشارة 
+        </Link>
+
       </div>
-    ))}
-  </div>
-</div>
 
-          {/* Right — hero image */}
-          <div className="hidden lg:block relative">
-            <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl img-zoom">
-              <img
-                src="https://images.unsplash.com/photo-1758270704763-22072a90d3b6?w=800&h=1000&fit=crop&auto=format"
-                alt="Students studying in a modern university"
-                className="w-full h-full object-cover"
-              />
-              {/* Floating card */}
-              <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur rounded-2xl p-4 shadow-xl">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-navy flex items-center justify-center shrink-0">
-                    <TrendingUp size={18} className="text-white" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted">Applications this year</p>
-                    <p className="font-bold text-navy">1,240+ students</p>
-                  </div>
-                  <div className="ml-auto flex -space-x-2">
-                    {['1472099645785-5658abf4ff4e', '1494790108755-2616b9e77b3a', '1500648767791-00dcc994a43e'].map((id) => (
-                      <img
-                        key={id}
-                        src={`https://images.unsplash.com/photo-${id}?w=40&h=40&fit=crop&auto=format`}
-                        alt=""
-                        className="w-8 h-8 rounded-full border-2 border-white object-cover"
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+      <div className="flex  gap-10 mt-6">
+
+        {[
+          "قبول ",
+          "منح ",
+          "تأشيرة ",
+         
+        ].map((item) => (
+
+          <div
+            key={item}
+            className="flex items-center gap-2 text-white"
+          >
+            <CheckCircle2
+              size={18}
+              className="text-[#FFD54A]"
+            />
+            {item}
           </div>
-        </div>
 
-        {/* Scroll indicator */}
-       
-      </section>
+        ))}
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* ── STATS ─────────────────────────────────────────────────── */}
      <section className="bg-white border-b border-border">
@@ -476,6 +470,60 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-10 bg-white">
+  <div className="max-w-7xl mx-auto px-2 lg:px-8">
+
+    <div className="relative rounded-[10px] overflow-hidden h-[400px]">
+
+      {/* الصورة */}
+      <img
+        src="https://i.pinimg.com/736x/b0/06/86/b00686378e3b8a20d7f4b8520c6f100e.jpg"
+        alt="من نحن"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+
+      {/* طبقة داكنة */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0d2b5e]/90 via-[#0d2b5e]/80 to-transparent" />
+
+      {/* النص */}
+      <div className="relative z-10 h-full flex items-center">
+        <div className="max-w-xl px-5 lg:px-16 text-white">
+
+          <span className="inline-block px-2 py-2 rounded-full bg-[#0d2b5e] backdrop-blur text-sm font-semibold mb-6">
+            من نحن
+          </span>
+
+          <h2 className="text-2xl  text- lg:text-6xl font-bold leading-tight mb-6">
+            نرشدك إلى أفضل
+            <br />
+            الجامعات في ماليزيا
+          </h2>
+
+          <p className="text-white/90 text-lg leading-6 mb-6">
+            في <span className="font-bold text-yellow-300">Malaysian</span>
+            نساعد الطلاب في اختيار الجامعة المناسبة،
+            والتقديم على المنح الدراسية،
+            واستخراج القبول الجامعي،
+            وإنهاء إجراءات التأشيرة،
+            مع متابعة كاملة حتى وصولك إلى ماليزيا.
+          </p>
+
+          <Link
+            to="/about"
+            className="inline-flex items-center gap-3 px-5 py-2 rounded-[10px] bg-[#0d2b5e] text-[#f8fafc] font-bold hover:bg-yellow-300 transition-all"
+          >
+            تعرف علينا
+            <ArrowRight size={18} />
+          </Link>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
       {/* ── FEATURED UNIVERSITIES ─────────────────────────────────── */}
       <section className="py-8 lg:py-32 bg-white">
   <div className="max-w-7xl mx-auto px-5 lg:px-8">
@@ -581,6 +629,8 @@ export default function Home() {
 </div>
   </div>
 </section>
+
+
 
       {/* ── WHY MALAYSIA ──────────────────────────────────────────── */}
       <section className="py-10 lg:py-32 bg-navy overflow-hidden relative">
@@ -773,6 +823,42 @@ export default function Home() {
         <ArrowLeft size={18} />
       </Link>
     </div>
+
+  </div>
+</section>
+<section className="py-24 bg-white">
+  <div className="max-w-7xl mx-auto px-3 lg:px-8">
+
+    <div className="text-center mb-12">
+      <span className="inline-block px-4 py-2 rounded-full bg-[#0d2b5e]/10 text-[#0d2b5e] font-semibold text-sm mb-4">
+        موقعنا
+      </span>
+
+      <h2 className="text-4xl lg:text-5xl font-bold text-[#0d2b5e] mb-5">
+        زوروا مكتبنا في ماليزيا
+      </h2>
+
+      <p className="text-gray-600 max-w-2xl mx-auto leading-8">
+        يسعدنا استقبالكم في مكتب Malaysian بماليزيا للإجابة على جميع
+        استفساراتكم المتعلقة بالدراسة والقبول الجامعي والخدمات الطلابية.
+      </p>
+    </div>
+
+    <div className="overflow-hidden rounded-[10px] shadow-2xl border border-gray-200">
+
+      <iframe
+        src="https://www.google.com/maps?q=Kuala+Lumpur,+Malaysia&output=embed"
+        width="100%"
+        height="250"
+        loading="lazy"
+        allowFullScreen
+        referrerPolicy="no-referrer-when-downgrade"
+        className="w-full"
+      />
+
+    </div>
+
+    
 
   </div>
 </section>

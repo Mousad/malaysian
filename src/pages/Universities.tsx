@@ -1,115 +1,189 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, BookOpen, Clock, MapPin, Search, SlidersHorizontal } from 'lucide-react'
+import { ArrowRight, BookOpen, Clock, MapPin,  Search, SlidersHorizontal } from 'lucide-react'
 
 export const UNIVERSITIES_DATA = [
   {
     id: 'um',
-    name: 'University of Malaya',
-    short: 'UM',
-    rank: '#1 in Malaysia',
-    rankGlobal: 'QS Top 70 Globally',
-    city: 'Kuala Lumpur',
-    tuition: 'From MYR 12,000/yr',
-    intlTuition: 'From MYR 18,000/yr',
-    duration: '3–4 years',
-    type: 'Public',
-    programs: ['Medicine', 'Engineering', 'Business', 'Law', 'Computer Science'],
+
+      logo: 'https://backend.studyfans.com/storage/media/Universities/logo/2735/uvxavGEUMMA6fXWlLCMzUNXUtuRekKEltWtkuaLG.webp',
+    name: 'جامعة مالايا',
+    rank: 'الأولى في ماليزيا',
+    rankGlobal: 'ضمن أفضل 70 جامعة عالميًا (QS)',
+    city: 'كوالالمبور',
+    tuition: 'ابتداءً من 12,000 رنجيت ماليزي سنويًا',
+    intlTuition: 'للطلاب الدوليين: ابتداءً من 18,000 رنجيت ماليزي سنويًا',
+    duration: '3 - 4 سنوات',
+    type: 'حكومية',
+    programs: [
+      'الطب',
+      'الهندسة',
+      'إدارة الأعمال',
+      'القانون',
+      'علوم الحاسوب'
+    ],
     img: 'https://images.unsplash.com/photo-1664273891579-22f28332f3c4?w=700&h=420&fit=crop&auto=format',
     heroImg: 'https://images.unsplash.com/photo-1664273891579-22f28332f3c4?w=1400&h=600&fit=crop&auto=format',
-    about: "The University of Malaya is Malaysia's oldest and highest-ranked university, consistently placed in the QS World University Rankings Top 100. Located in Kuala Lumpur, UM offers over 100 undergraduate and 150 postgraduate programs in English.",
+    about:
+      'تعد جامعة مالايا أقدم وأعرق جامعة في ماليزيا، وهي تحتل باستمرار مراكز متقدمة ضمن تصنيف QS العالمي. تقع في العاصمة كوالالمبور، وتوفر أكثر من 100 برنامج بكالوريوس و150 برنامج دراسات عليا باللغة الإنجليزية.',
     ielts: '6.0+',
-    scholarships: ['MARA Scholarship', 'UM Excellence Award', 'International Merit Scholarship'],
+    scholarships: [
+      'منحة MARA',
+      'منحة التميز بجامعة مالايا',
+      'منحة الجدارة الدولية'
+    ],
   },
+
   {
     id: 'taylors',
-    name: "Taylor's University",
-    short: 'TU',
-    rank: '#2 Private Malaysia',
-    rankGlobal: 'QS Top 250 Asia',
-    city: 'Subang Jaya',
-    tuition: 'From MYR 28,000/yr',
-    intlTuition: 'From MYR 35,000/yr',
-    duration: '3 years',
-    type: 'Private',
-    programs: ['Business', 'Hospitality', 'Architecture', 'Medicine', 'Engineering'],
+    name: 'جامعة تايلورز',
+      logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4EKGgHaNBpvKXmSc1QzhfNdyzgQyJBF_9OjW1i6cnmgEVfqk8j2gsoSI&s=10',
+    rank: 'ثاني أفضل جامعة خاصة في ماليزيا',
+    rankGlobal: 'ضمن أفضل 250 جامعة في آسيا',
+    city: 'سوبانج جايا',
+    tuition: 'ابتداءً من 28,000 رنجيت ماليزي سنويًا',
+    intlTuition: 'للطلاب الدوليين: ابتداءً من 35,000 رنجيت ماليزي سنويًا',
+    duration: '3 سنوات',
+    type: 'خاصة',
+    programs: [
+      'إدارة الأعمال',
+      'الضيافة',
+      'الهندسة المعمارية',
+      'الطب',
+      'الهندسة'
+    ],
     img: 'https://images.unsplash.com/photo-1651670630202-d3bae630885b?w=700&h=420&fit=crop&auto=format',
     heroImg: 'https://images.unsplash.com/photo-1651670630202-d3bae630885b?w=1400&h=600&fit=crop&auto=format',
-    about: "Taylor's University is one of Malaysia's leading private universities, renowned for its modern campus and strong industry connections. It offers globally-recognised programs and has partnerships with top universities worldwide.",
+    about:
+      'تعتبر جامعة تايلورز من أفضل الجامعات الخاصة في ماليزيا، وتتميز بحرم جامعي حديث وشراكات قوية مع الجامعات العالمية، كما تقدم برامج أكاديمية معترفًا بها دوليًا.',
     ielts: '5.5+',
-    scholarships: ["Taylor's Excellence Award", 'Merit Scholarship', 'Bumiputera Scholarship'],
+    scholarships: [
+      'منحة التميز بجامعة تايلورز',
+      'منحة التفوق',
+      'منحة بوميبوترا'
+    ],
   },
+
   {
     id: 'apu',
-    name: 'Asia Pacific University',
-    short: 'APU',
-    rank: 'Top 5 Private',
-    rankGlobal: 'QS Top 200 Asia',
-    city: 'Kuala Lumpur',
-    tuition: 'From MYR 22,000/yr',
-    intlTuition: 'From MYR 28,000/yr',
-    duration: '3 years',
-    type: 'Private',
-    programs: ['Technology', 'Business', 'Engineering', 'Design', 'Accounting'],
+    name: 'جامعة آسيا والمحيط الهادئ',
+
+      logo: 'https://www.cafueducation.com/media/images/school_logos/apu.jpg',
+    rank: 'ضمن أفضل 5 جامعات خاصة',
+    rankGlobal: 'ضمن أفضل 200 جامعة في آسيا',
+    city: 'كوالالمبور',
+    tuition: 'ابتداءً من 22,000 رنجيت ماليزي سنويًا',
+    intlTuition: 'للطلاب الدوليين: ابتداءً من 28,000 رنجيت ماليزي سنويًا',
+    duration: '3 سنوات',
+    type: 'خاصة',
+    programs: [
+      'تكنولوجيا المعلومات',
+      'إدارة الأعمال',
+      'الهندسة',
+      'التصميم',
+      'المحاسبة'
+    ],
     img: 'https://images.unsplash.com/photo-1775503059048-214026cce5cf?w=700&h=420&fit=crop&auto=format',
     heroImg: 'https://images.unsplash.com/photo-1775503059048-214026cce5cf?w=1400&h=600&fit=crop&auto=format',
-    about: 'Asia Pacific University (APU) is among the most progressive universities in Malaysia with a unique international student community from over 130 countries. APU is a QS 5-Star Rated University.',
+    about:
+      'تعد جامعة آسيا والمحيط الهادئ (APU) من أكثر الجامعات تطورًا في ماليزيا، وتضم طلابًا من أكثر من 130 دولة، كما أنها حاصلة على تصنيف خمس نجوم من QS.',
     ielts: '5.0+',
-    scholarships: ['APU Scholarship', 'International Excellence Award', 'Early Bird Discount'],
+    scholarships: [
+      'منحة APU',
+      'منحة التميز الدولية',
+      'خصم التسجيل المبكر'
+    ],
   },
+
   {
     id: 'inti',
-    name: 'INTI International University',
-    short: 'INTI',
-    rank: 'QS 5-Star',
-    rankGlobal: 'Top Private Malaysia',
-    city: 'Nilai, Negeri Sembilan',
-    tuition: 'From MYR 18,000/yr',
-    intlTuition: 'From MYR 25,000/yr',
-    duration: '3 years',
-    type: 'Private',
-    programs: ['Business', 'Computing', 'Engineering', 'Accounting', 'Pharmacy'],
+    name: 'جامعة إنتي الدولية',
+      logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpHts6h9JoQGAIOweK8t3Z1PXYCd_kZPpa101R-5QXkg&s=10',
+    rank: 'تصنيف QS خمس نجوم',
+    rankGlobal: 'من أفضل الجامعات الخاصة في ماليزيا',
+    city: 'نيلاي - ولاية نيجري سمبيلان',
+    tuition: 'ابتداءً من 18,000 رنجيت ماليزي سنويًا',
+    intlTuition: 'للطلاب الدوليين: ابتداءً من 25,000 رنجيت ماليزي سنويًا',
+    duration: '3 سنوات',
+    type: 'خاصة',
+    programs: [
+      'إدارة الأعمال',
+      'علوم الحاسوب',
+      'الهندسة',
+      'المحاسبة',
+      'الصيدلة'
+    ],
     img: 'https://images.unsplash.com/photo-1781032161857-41214c66559f?w=700&h=420&fit=crop&auto=format',
     heroImg: 'https://images.unsplash.com/photo-1781032161857-41214c66559f?w=1400&h=600&fit=crop&auto=format',
-    about: 'INTI International University is a Laureate International Universities institution offering programs linked with top universities in the UK, Australia, and the US. Students can complete dual degrees.',
+    about:
+      'جامعة إنتي الدولية عضو في شبكة الجامعات العالمية، وتوفر برامج مشتركة مع جامعات في بريطانيا وأستراليا والولايات المتحدة، كما تتيح للطلاب الحصول على درجات مزدوجة.',
     ielts: '5.5+',
-    scholarships: ['INTI Excellence Scholarship', 'Laureate Partner Award', 'Early Application Discount'],
+    scholarships: [
+      'منحة التميز بجامعة إنتي',
+      'منحة الشركاء الدوليين',
+      'خصم التقديم المبكر'
+    ],
   },
+
   {
     id: 'upm',
-    name: 'Universiti Putra Malaysia',
-    short: 'UPM',
-    rank: 'QS Top 200',
-    rankGlobal: 'QS Top 200 Globally',
-    city: 'Serdang, Selangor',
-    tuition: 'From MYR 10,000/yr',
-    intlTuition: 'From MYR 16,000/yr',
-    duration: '3–4 years',
-    type: 'Public',
-    programs: ['Agriculture', 'Medicine', 'Engineering', 'Science', 'Economics'],
+    name: 'جامعة بوترا ماليزيا',
+      logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCyM4E0ZoMe5M9G5EC1sa1dU-zGIqFIRlawwVWO6nkYA&s=10',
+    rank: 'ضمن أفضل 200 جامعة عالميًا',
+    rankGlobal: 'ضمن أفضل 200 جامعة عالميًا (QS)',
+    city: 'سردانج - سيلانجور',
+    tuition: 'ابتداءً من 10,000 رنجيت ماليزي سنويًا',
+    intlTuition: 'للطلاب الدوليين: ابتداءً من 16,000 رنجيت ماليزي سنويًا',
+    duration: '3 - 4 سنوات',
+    type: 'حكومية',
+    programs: [
+      'الزراعة',
+      'الطب',
+      'الهندسة',
+      'العلوم',
+      'الاقتصاد'
+    ],
     img: 'https://images.unsplash.com/photo-1664273891579-22f28332f3c4?w=700&h=420&fit=crop&auto=format',
     heroImg: 'https://images.unsplash.com/photo-1664273891579-22f28332f3c4?w=1400&h=600&fit=crop&auto=format',
-    about: 'Universiti Putra Malaysia (UPM) is one of the leading research universities in Malaysia with a sprawling green campus. UPM is particularly strong in agriculture, science, and engineering.',
+    about:
+      'جامعة بوترا ماليزيا من الجامعات البحثية الرائدة في ماليزيا، وتشتهر بحرمها الجامعي الواسع وبرامجها القوية في الزراعة والهندسة والعلوم.',
     ielts: '6.0+',
-    scholarships: ['Malaysian Government Scholarship', 'UPM Graduate Fellowship', 'International Student Award'],
+    scholarships: [
+      'المنحة الحكومية الماليزية',
+      'منحة الدراسات العليا بجامعة بوترا',
+      'منحة الطلاب الدوليين'
+    ],
   },
+
   {
     id: 'ukm',
-    name: 'Universiti Kebangsaan Malaysia',
-    short: 'UKM',
-    rank: 'QS Top 250',
-    rankGlobal: 'QS Top 250 Globally',
-    city: 'Bangi, Selangor',
-    tuition: 'From MYR 11,000/yr',
-    intlTuition: 'From MYR 17,000/yr',
-    duration: '3–4 years',
-    type: 'Public',
-    programs: ['Medicine', 'Dentistry', 'Engineering', 'Law', 'Education'],
+    name: 'الجامعة الوطنية الماليزية',
+
+      logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNVMGNUnfsCD0zEe7JYa783qYs_XtOkqAM8uX8GOOpvf2IdKXLXeulL2s&s=10',
+    rank: 'ضمن أفضل 250 جامعة عالميًا',
+    rankGlobal: 'ضمن أفضل 250 جامعة عالميًا (QS)',
+    city: 'بانجي - سيلانجور',
+    tuition: 'ابتداءً من 11,000 رنجيت ماليزي سنويًا',
+    intlTuition: 'للطلاب الدوليين: ابتداءً من 17,000 رنجيت ماليزي سنويًا',
+    duration: '3 - 4 سنوات',
+    type: 'حكومية',
+    programs: [
+      'الطب',
+      'طب الأسنان',
+      'الهندسة',
+      'القانون',
+      'التربية'
+    ],
     img: 'https://images.unsplash.com/photo-1651670630202-d3bae630885b?w=700&h=420&fit=crop&auto=format',
     heroImg: 'https://images.unsplash.com/photo-1651670630202-d3bae630885b?w=1400&h=600&fit=crop&auto=format',
-    about: "Universiti Kebangsaan Malaysia (UKM) is a comprehensive research university and one of Malaysia's 5 research universities. It has strong faculties in medical sciences and humanities.",
+    about:
+      'الجامعة الوطنية الماليزية (UKM) من الجامعات البحثية الرائدة في ماليزيا، وتتميز بكليات قوية في الطب والهندسة والعلوم الإنسانية، وتستقطب آلاف الطلاب الدوليين سنويًا.',
     ielts: '6.0+',
-    scholarships: ['Malaysian Government Scholarship', 'UKM Chancellor Award', 'Graduate Research Fellowship'],
+    scholarships: [
+      'المنحة الحكومية الماليزية',
+      'منحة رئيس الجامعة',
+      'منحة البحث للدراسات العليا'
+    ],
   },
 ]
 
@@ -127,139 +201,169 @@ export default function Universities() {
   return (
     <div className="bg-white">
       {/* HERO */}
-      <section className="pt-32 pb-20 bg-navy relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1597148543182-830ef7bbb904?w=1800&h=600&fit=crop&auto=format"
-            alt="Malaysian university skyline"
-            className="w-full h-full object-cover opacity-15"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy/80 to-navy" />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-4">Our Network</p>
-          <h1 className="text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight mb-4">
-            Partner Universities
-          </h1>
-          <p className="text-white/60 text-lg max-w-xl mx-auto">
-            35+ accredited Malaysian universities — from world-ranked public institutions to industry-connected private colleges.
-          </p>
-        </div>
-      </section>
+     {/* HERO */}
+<section className="pt-32 pb-20 bg-navy relative overflow-hidden">
+  <div className="absolute inset-0">
+    <img
+      src="https://i.pinimg.com/736x/ed/63/40/ed6340ac8c3e726af18363badae525be.jpg"
+      alt="الجامعات الماليزية"
+      className="w-full h-full object-cover opacity-15"
+    />
+    <div className="absolute inset-0 bg-gradient from-navy/6 to-navy" />
+  </div>
+
+  <div className="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
+
+    <p className="text-xs font-semibold tracking-widest text-white/50 mb-4">
+      جامعاتنا الشريكة
+    </p>
+
+    <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight mb-5">
+      أفضل الجامعات
+      <br />
+      الماليزية
+    </h1>
+
+    <p className="text-white/80 text-lg max-w-2xl mx-auto leading-8">
+      اكتشف نخبة من الجامعات الماليزية المعتمدة التي تتعاون معها
+      <span className="font-semibold"> UniGuide </span>
+      لتوفير أفضل الفرص التعليمية للطلاب، مع برامج أكاديمية متنوعة ورسوم دراسية مناسبة.
+    </p>
+
+  </div>
+</section>
 
       {/* FILTERS */}
-      <section className="py-8 bg-surface border-b border-border sticky top-16 z-30">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row gap-4 items-center justify-between">
-          {/* Search */}
-          <div className="relative w-full sm:w-80">
-            <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted" />
-            <input
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search universities or cities..."
-              className="w-full pl-9 pr-4 py-2.5 bg-white border border-border rounded-xl text-sm text-ink placeholder:text-muted focus:outline-none focus:border-navy/40 focus:ring-2 focus:ring-navy/10 transition"
-            />
-          </div>
-
-          {/* Filter pills */}
-          <div className="flex items-center gap-2">
-            <SlidersHorizontal size={14} className="text-muted" />
-            {(['All', 'Public', 'Private'] as const).map((f) => (
-              <button
-                key={f}
-                onClick={() => setFilter(f)}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
-                  filter === f
-                    ? 'bg-navy text-white'
-                    : 'bg-white border border-border text-ink/60 hover:border-navy/30'
-                }`}
-              >
-                {f}
-              </button>
-            ))}
-          </div>
-
-          <p className="text-sm text-muted whitespace-nowrap">{filtered.length} universities</p>
-        </div>
-      </section>
+    
 
       {/* GRID */}
-      <section className="py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filtered.map(({ id, name, short, rank, rankGlobal, city, tuition, duration, type, programs, img }) => (
-              <Link
-                key={id}
-                to={`/universities/${id}`}
-                className="group bg-white rounded-3xl overflow-hidden border border-border hover:border-navy/20 hover:shadow-xl transition-all duration-300 flex flex-col"
+    <section className="py-12 lg:py-16">
+  <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      {filtered.map(({ id, name,   logo, rank, rankGlobal, city, tuition, duration, type, programs, img }) => (
+
+        <Link
+          key={id}
+          to={`/universities/${id}`}
+          className="group bg-white rounded-3xl overflow-hidden border border-border hover:border-navy/20 hover:shadow-xl transition-all duration-300 flex flex-col"
+        >
+
+          {/* صورة الجامعة */}
+          <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
+            <img
+              src={img}
+              alt={name}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+
+            <div className="absolute top-4 left-4 flex gap-2">
+
+              <span className="px-3 py-1 bg-white/95 backdrop-blur rounded-full text-xs font-semibold text-navy">
+                {rank}
+              </span>
+
+              <span
+                className={`px-3 py-1 rounded-full text-xs font-medium ${
+                  type === 'حكومية'
+                    ? 'bg-navy text-white'
+                    : 'bg-white/95 text-ink'
+                }`}
               >
-                {/* Image */}
-                <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
-                  <img
-                    src={img}
-                    alt={name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    <span className="px-2.5 py-1 bg-white/95 backdrop-blur rounded-full text-xs font-semibold text-navy">{rank}</span>
-                    <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${
-                      type === 'Public' ? 'bg-navy/90 text-white' : 'bg-white/95 text-ink'
-                    }`}>{type}</span>
-                  </div>
-                </div>
+                {type}
+              </span>
 
-                {/* Body */}
-                <div className="p-6 flex flex-col flex-1">
-                  <div className="flex items-start gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-navy text-white flex items-center justify-center text-xs font-bold shrink-0">
-                      {short}
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-ink leading-snug">{name}</h3>
-                      <p className="text-xs text-muted mt-0.5 flex items-center gap-1">
-                        <MapPin size={10} /> {city}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="text-xs text-muted mb-4">{rankGlobal}</div>
-
-                  <div className="flex flex-wrap gap-1.5 mb-5">
-                    {programs.slice(0, 3).map((p) => (
-                      <span key={p} className="px-2.5 py-1 bg-accent rounded-full text-xs text-navy font-medium">
-                        {p}
-                      </span>
-                    ))}
-                    {programs.length > 3 && (
-                      <span className="px-2.5 py-1 bg-surface rounded-full text-xs text-muted">
-                        +{programs.length - 3} more
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3 mb-6 mt-auto">
-                    {[
-                      { icon: BookOpen, val: tuition },
-                      { icon: Clock, val: duration },
-                    ].map(({ icon: Icon, val }) => (
-                      <div key={val} className="flex items-center gap-1.5 text-xs text-muted">
-                        <Icon size={12} className="text-navy/40 shrink-0" />
-                        {val}
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center justify-between pt-4 border-t border-border">
-                    <span className="text-navy font-semibold text-sm flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
-                      View Details <ArrowRight size={14} />
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+
+          {/* المحتوى */}
+          <div className="p-6 flex flex-col flex-1">
+
+            <div className="flex items-start gap-3 mb-4">
+
+              <div className="w-12 h-12 rounded-xl bg-white border border-border p-2 flex items-center justify-center shrink-0">
+  <img
+    src={logo}
+    alt={name}
+    className="w-full h-full object-contain"
+  />
+</div>
+
+              <div>
+                <h3 className="font-bold text-lg text-ink leading-snug">
+                  {name}
+                </h3>
+
+                <p className="text-xs text-muted mt-1 flex items-center gap-1">
+                  <MapPin size={12} />
+                  {city}
+                </p>
+              </div>
+
+            </div>
+
+            {/* التصنيف العالمي */}
+            <div className="text-xs text-muted mb-4">
+              {rankGlobal}
+            </div>
+
+            {/* التخصصات */}
+            <div className="flex flex-wrap gap-2 mb-5">
+
+              {programs.slice(0, 3).map((p) => (
+                <span
+                  key={p}
+                  className="px-3 py-1 bg-accent rounded-full text-xs text-navy font-medium"
+                >
+                  {p}
+                </span>
+              ))}
+
+              {programs.length > 3 && (
+                <span className="px-3 py-1 bg-surface rounded-full text-xs text-muted">
+                  + {programs.length - 3} تخصصات أخرى
+                </span>
+              )}
+
+            </div>
+
+            {/* الرسوم والمدة */}
+            <div className="grid grid-cols-2 gap-4 mb-6 mt-auto">
+
+              <div className="flex items-center gap-2 text-xs text-muted">
+                <BookOpen size={13} className="text-navy" />
+                {tuition}
+              </div>
+
+              <div className="flex items-center gap-2 text-xs text-muted">
+                <Clock size={13} className="text-navy" />
+                {duration}
+              </div>
+
+            </div>
+
+            {/* زر التفاصيل */}
+            <div className="flex items-center justify-between pt-4 border-t border-border">
+
+              <span className="text-navy font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
+
+                عرض التفاصيل
+
+                <ArrowRight size={15} />
+
+              </span>
+
+            </div>
+
+          </div>
+
+        </Link>
+
+      ))}
+
+    </div>
+  </div>
+</section>
     </div>
   )
 }
